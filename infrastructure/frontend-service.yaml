@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-test-deployment
+  labels:
+    app: frontend-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: react
+  template:
+    metadata:
+      labels:
+        project: react
+    spec:
+      containers:
+        - name: react-app
+          image: spisarevskiy/react-test-app
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: frontend-test-service
+  labels:
+    env: prod
+    owner: SergeyPisarevskiy
+spec:
+  selector:
+    project: react    # Selecting Pods with thoose labels
+  ports:
+    - name: app-listener
+      protocol: TCP
+      port: 80         # Port on Load Balancer
+      targetPort: 80   # Port on Pod
