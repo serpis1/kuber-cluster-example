@@ -1,0 +1,1 @@
+<h1 align="center">Basic example to create Kubernetes cluster</h1>
