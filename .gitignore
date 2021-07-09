@@ -1,0 +1,7 @@
+# frontend
+/frontend/node_modules
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/build
+/frontend/yarn.lock
